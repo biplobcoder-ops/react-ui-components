@@ -4,7 +4,7 @@ import {
   useRef,
   useState,
 } from "react";
-
+import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
 import {
@@ -422,33 +422,31 @@ const Select = ({
         disabled={disabled || loading}
         onClick={handleOpen}
         onKeyDown={handleKeyDown}
-        className={clsx(
-          "w-full",
+        className={twMerge(
+          clsx(
+            "w-full",
+            "flex items-center justify-between gap-2",
+            "outline-none",
+            "transition-all duration-200",
+            "focus:ring-2 focus:ring-blue-500/20",
 
-          "flex items-center justify-between gap-2",
-
-          "outline-none",
-
-          "transition-all duration-200",
-
-          "focus:ring-2 focus:ring-blue-500/20",
-
-          disabled &&
+            disabled &&
             "cursor-not-allowed opacity-60",
 
-          variants[variant] ||
+            variants[variant] ||
             variants.default,
 
-          states[state] || states.default,
+            states[state] ||
+            states.default,
 
-          currentSize.trigger,
+            currentSize.trigger,
 
-          roundedStyles[rounded] ||
+            roundedStyles[rounded] ||
             roundedStyles.lg,
 
-          triggerClassName
+            triggerClassName
+          )
         )}
-        {...props}
       >
         {/* Left Content */}
 
@@ -462,9 +460,8 @@ const Select = ({
           <span
             className={clsx(
               "truncate text-left",
-
               selectedOptions.length === 0 &&
-                "text-slate-400"
+              "text-slate-400"
             )}
           >
             {selectedLabel}
@@ -484,14 +481,14 @@ const Select = ({
                 tabIndex={-1}
                 onClick={handleClear}
                 className="
-                  flex
-                  items-center
-                  justify-center
-                  rounded-full
-                  text-slate-400
-                  hover:bg-slate-100
-                  hover:text-slate-700
-                "
+            flex
+            items-center
+            justify-center
+            rounded-full
+            text-slate-400
+            hover:bg-slate-100
+            hover:text-slate-700
+          "
               >
                 <LuX
                   className={currentSize.icon}
@@ -504,14 +501,14 @@ const Select = ({
           {loading ? (
             <span
               className="
-                h-4
-                w-4
-                animate-spin
-                rounded-full
-                border-2
-                border-blue-500
-                border-t-transparent
-              "
+          h-4
+          w-4
+          animate-spin
+          rounded-full
+          border-2
+          border-blue-500
+          border-t-transparent
+        "
             />
           ) : (
             <>
@@ -524,9 +521,7 @@ const Select = ({
               <LuChevronDown
                 className={clsx(
                   currentSize.icon,
-
                   "transition-transform duration-200",
-
                   isOpen && "rotate-180"
                 )}
               />
@@ -539,7 +534,7 @@ const Select = ({
 
       {isOpen && !disabled && (
         <div
-          className={clsx(
+          className={twMerge(clsx(
             `
               absolute
               left-0
@@ -554,7 +549,7 @@ const Select = ({
               shadow-lg
             `,
             dropdownClassName
-          )}
+          ))}
         >
           {/* Search */}
 
@@ -638,17 +633,17 @@ const Select = ({
                         currentSize.option,
 
                         option.disabled &&
-                          "cursor-not-allowed opacity-40",
+                        "cursor-not-allowed opacity-40",
 
                         !option.disabled &&
-                          "hover:bg-slate-100",
+                        "hover:bg-slate-100",
 
                         isHighlighted &&
-                          !option.disabled &&
-                          "bg-slate-100",
+                        !option.disabled &&
+                        "bg-slate-100",
 
                         isSelected &&
-                          "bg-blue-50 text-blue-700"
+                        "bg-blue-50 text-blue-700"
                       )}
                     >
                       <span className="truncate">
