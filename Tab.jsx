@@ -82,6 +82,7 @@ const Tabs = ({
         text-slate-600
         hover:bg-slate-100
         hover:text-slate-900
+      
       `,
 
       active: `
@@ -89,6 +90,7 @@ const Tabs = ({
         text-white
         hover:bg-blue-600
         hover:text-white
+       
       `,
     },
 
@@ -226,6 +228,7 @@ const Tabs = ({
             <button
               key={item.value}
               type="button"
+            
 
               role="tab"
 
@@ -260,10 +263,10 @@ const Tabs = ({
                   "font-medium",
 
                   "outline-none",
+                  "cursor-pointer",
 
                   "transition-all",
                   "duration-200",
-
                   "focus-visible:ring-2",
                   "focus-visible:ring-blue-500/30",
 
